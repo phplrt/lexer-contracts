@@ -1,5 +1,5 @@
 {
-    "name": "phplrt/lexer-contract",
+    "name": "phplrt/lexer-contracts",
     "type": "library",
     "description": "A set of phplrt lexer abstractions",
     "license": "MIT",
@@ -30,7 +30,7 @@
     ],
     "require": {
         "php": ">=7.1.3",
-        "phplrt/io-contract":  "2.0.*|2.0.x-dev",
+        "phplrt/io-contracts":  "2.0.*|2.0.x-dev",
     },
     "autoload": {
         "psr-4": {
