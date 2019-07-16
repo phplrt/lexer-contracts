@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of Phplrt package.
+ * This file is part of phplrt package.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -10,50 +10,63 @@ declare(strict_types=1);
 namespace Phplrt\Contracts\Lexer;
 
 /**
- * The lexical token that returns from stream.
+ * The lexical token that returns from LexerInterface
  */
 interface TokenInterface
 {
     /**
-     * Token name.
+     * Returns the ID or name of the token.
      *
-     * @return string
+     * Please note that the token can be anonymous. In this case, the name
+     * should return the same as the contents of the token, index or null.
+     *
+     * For example, to implement tokens of php "token_get_all()" function:
+     *
+     * <code>
+     *  // Source: "<?php if (false) { return true; }"
+     *
+     *  ------------------------------
+     *    Name          | Value
+     *  ------------------------------
+     *    T_OPEN_TAG    | "<?php "
+     *    T_IF          | "if"
+     *    T_WHITESPACE  | " "
+     *    null          | "("
+     *    T_STRING      | "false"
+     *    null          | ")"
+     *    T_WHITESPACE  | " "
+     *    null          | "{"
+     *    T_RETURN      | "return"
+     *    T_WHITESPACE  | " "
+     *    T_STRING      | "true"
+     *    null          | ";"
+     *    T_WHITESPACE  | " "
+     *    null          | "}"
+     *  ------------------------------
+     * </code>
+     *
+     * @return string|int|null
      */
-    public function getName(): string;
+    public function getName();
 
     /**
-     * Token position in bytes.
+     * Token position in bytes
      *
      * @return int
      */
     public function getOffset(): int;
 
     /**
-     * Returns the value of the captured subgroup.
+     * Returns the value of the captured subgroup
      *
-     * @param int $group Number of subgroup
-     * @return string|null If the group is not found, the null will return.
+     * @return string
      */
-    public function getValue(int $group = 0): ?string;
+    public function getValue(): string;
 
     /**
-     * Returns the list of the captured subgroups.
-     *
-     * @return iterable
-     */
-    public function getGroups(): iterable;
-
-    /**
-     * The token value size in bytes.
+     * The token value size in bytes
      *
      * @return int
      */
     public function getBytes(): int;
-
-    /**
-     * The token value size in chars (multibyte encodings contain several bytes).
-     *
-     * @return int
-     */
-    public function getLength(): int;
 }
