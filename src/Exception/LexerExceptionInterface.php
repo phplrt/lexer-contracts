@@ -7,11 +7,12 @@
  */
 declare(strict_types=1);
 
-namespace Phplrt\Contracts\Lexer;
+namespace Phplrt\Contracts\Lexer\Exception;
 
 /**
- * Every Lexer related exception MUST implement this interface.
+ * Throws when internal lexer exception occurs.
  */
 interface LexerExceptionInterface extends \Throwable
 {
+
 }
