@@ -15,9 +15,36 @@ namespace Phplrt\Contracts\Lexer;
 interface TokenInterface
 {
     /**
+     * ID of the token that marks the end of the incoming data.
+     *
+     * @var int
+     */
+    public const TYPE_END_OF_INPUT = 0x00;
+
+    /**
+     * ID of a token that is anonymous (without ID) or should
+     * be ignored by the parser.
+     *
+     * @var int
+     */
+    public const TYPE_SKIP = -0x01;
+
+    /**
+     * The token ID that was not defined.
+     *
+     * The lexer implementation allows an exception to be called
+     * during analysis, instead of returning the token object with
+     * this identifier.
+     *
+     * @var int
+     */
+    public const TYPE_UNKNOWN = -0x02;
+
+    /**
      * Returns a token type if he is known.
      *
-     * For example, to implement tokens of php "token_get_all()" function:
+     * For example, to implement tokens of php "token_get_all()"
+     * function:
      *
      * <code>
      *  >>> "<?php if (false) { return true; }"
@@ -66,4 +93,11 @@ interface TokenInterface
      * @return int
      */
     public function getBytes(): int;
+
+    /**
+     * Returns a state id if the token is part of it.
+     *
+     * @return int|null
+     */
+    public function getState(): ?int;
 }

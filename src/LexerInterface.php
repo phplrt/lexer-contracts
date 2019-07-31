@@ -21,34 +21,6 @@ interface LexerInterface
     /**
      * Returns a set of token objects from the passed source.
      *
-     * For example, to implement "token_get_all()" function:
-     *
-     * <code>
-     *  $source = new Readable('<?php if (false) { return true; }');
-     *
-     *  foreach ((new PhpLexer())->lex($source) as $token) {
-     *      echo vsprintf('%5s | "%s"' . "\n", [
-     *          $token->getType(),
-     *          $token->getValue()
-     *      ]);
-     *  }
-     *
-     *  >> 379 | "<?php "
-     *  >> 327 | "if"
-     *  >> 382 | " "
-     *  >> 0   | "("
-     *  >> 319 | "false"
-     *  >> 0   | ")"
-     *  >> 382 | " "
-     *  >> 0   | "{"
-     *  >> 348 | "return"
-     *  >> 382 | " "
-     *  >> 319 | "true"
-     *  >> 0   | ";"
-     *  >> 382 | " "
-     *  >> 0   | "}"
-     * </code>
-     *
      * @param ReadableInterface $source
      * @return iterable|TokenInterface[]
      *
