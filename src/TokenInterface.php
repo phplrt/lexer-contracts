@@ -28,23 +28,23 @@ interface TokenInterface
      *    379       | "<?php "
      *    327       | "if"
      *    382       | " "
-     *    null      | "("
+     *    0         | "("
      *    319       | "false"
-     *    null      | ")"
+     *    0         | ")"
      *    382       | " "
-     *    null      | "{"
+     *    0         | "{"
      *    348       | "return"
      *    382       | " "
      *    319       | "true"
-     *    null      | ";"
+     *    0         | ";"
      *    382       | " "
-     *    null      | "}"
+     *    0         | "}"
      *  --------------------------
      * </code>
      *
-     * @return int|null
+     * @return int
      */
-    public function getType(): ?int;
+    public function getType(): int;
 
     /**
      * Token position in bytes
