@@ -31,4 +31,12 @@ interface LexerInterface
      * @throws RuntimeExceptionInterface
      */
     public function lex(ReadableInterface $source): iterable;
+
+    /**
+     * Get the symbolic name of a given token id.
+     *
+     * @param int $id
+     * @return string|null
+     */
+    public function getTokenName(int $id): ?string;
 }
