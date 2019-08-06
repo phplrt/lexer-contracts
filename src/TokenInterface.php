@@ -93,11 +93,4 @@ interface TokenInterface
      * @return int
      */
     public function getBytes(): int;
-
-    /**
-     * Returns a state id if the token is part of it.
-     *
-     * @return int|null
-     */
-    public function getState(): ?int;
 }
