@@ -17,17 +17,17 @@ interface TokenInterface
     /**
      * ID of the token that marks the end of the incoming data.
      *
-     * @var int
+     * @var string
      */
-    public const TYPE_END_OF_INPUT = 0x00;
+    public const TYPE_END_OF_INPUT = 'T_EOI';
 
     /**
      * ID of a token that is anonymous (without ID) or should
      * be ignored by the parser.
      *
-     * @var int
+     * @var string
      */
-    public const TYPE_SKIP = -0x01;
+    public const TYPE_SKIP = 'T_SKIP';
 
     /**
      * The token ID that was not defined.
@@ -36,9 +36,9 @@ interface TokenInterface
      * during analysis, instead of returning the token object with
      * this identifier.
      *
-     * @var int
+     * @var string
      */
-    public const TYPE_UNKNOWN = -0x02;
+    public const TYPE_UNKNOWN = 'T_UNKNOWN';
 
     /**
      * Returns a token type if he is known.
@@ -50,28 +50,29 @@ interface TokenInterface
      *  >>> "<?php if (false) { return true; }"
      *
      *  --------------------------
-     *    Type      | Value
+     *    Name          | Value
      *  --------------------------
-     *    379       | "<?php "
-     *    327       | "if"
-     *    382       | " "
-     *    0         | "("
-     *    319       | "false"
-     *    0         | ")"
-     *    382       | " "
-     *    0         | "{"
-     *    348       | "return"
-     *    382       | " "
-     *    319       | "true"
-     *    0         | ";"
-     *    382       | " "
-     *    0         | "}"
+     *    T_OPEN_TAG    | "<?php "
+     *    T_IF          | "if"
+     *    T_WHITESPACE  | " "
+     *    T_SKIP        | "("
+     *    T_STRING      | "false"
+     *    T_SKIP        | ")"
+     *    T_WHITESPACE  | " "
+     *    T_SKIP        | "{"
+     *    T_RETURN      | "return"
+     *    T_WHITESPACE  | " "
+     *    T_STRING      | "true"
+     *    T_SKIP        | ";"
+     *    T_WHITESPACE  | " "
+     *    T_SKIP        | "}"
+     *    T_EOI         | "\0"
      *  --------------------------
      * </code>
      *
-     * @return int
+     * @return string
      */
-    public function getType(): int;
+    public function getName(): string;
 
     /**
      * Token position in bytes
