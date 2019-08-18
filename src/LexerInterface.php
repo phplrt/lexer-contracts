@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Phplrt\Contracts\Lexer;
 
-use Phplrt\Contracts\Source\ReadableInterface;
 use Phplrt\Contracts\Lexer\Exception\LexerExceptionInterface;
 use Phplrt\Contracts\Lexer\Exception\RuntimeExceptionInterface;
 
@@ -21,11 +20,11 @@ interface LexerInterface
     /**
      * Returns a set of token objects from the passed source.
      *
-     * @param ReadableInterface $source
+     * @param string|resource $source
      * @return iterable|TokenInterface[]
      *
      * @throws LexerExceptionInterface
      * @throws RuntimeExceptionInterface
      */
-    public function lex(ReadableInterface $source): iterable;
+    public function lex($source): iterable;
 }
