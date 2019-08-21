@@ -36,7 +36,7 @@ exception indicates any type of internal error (for example, misspelled PCRE).
 Please note that argument mismatch with accepted types allows 
 `TypeError`, `AssertionError` or `InvalidArgumentException` exceptions.
 
-### Runtime Exceptions
+#### Runtime Exceptions
 
 In the case that an error occurred during execution, an exception of type 
 `Phplrt\Contracts\Lexer\RuntimeExceptionInterface` should be thrown. In 
@@ -61,7 +61,7 @@ interface TokenInterface
 }
 ```
 
-### Token Type
+#### Type
 
 The `getType()` method returns an identifier to which you can refer. The use of 
 a numerical identifier instead of strings is caused by its simpler adaptation 
@@ -74,7 +74,7 @@ $tokens = ['whitespace', 'int', 'string', ...];
 echo 'Token name is: ' . $tokens[$token->getType()];
 ```
 
-### Token Offset
+#### Offset
 
 The `getOffset()` method returns the shift in **bytes** (not chars) relative to 
 the beginning of the source data. It is mainly needed for debugging, when want 
@@ -84,7 +84,7 @@ In addition, the offset relative to the beginning of the source data can be
 quite simply converted to a line and offset (relative to the line), but it 
 takes up less space (one number, instead of two).
 
-### Token Value
+#### Value
 
 The `getValue()` method returns token string data. Using a string value
 facilitates portability. 
@@ -105,12 +105,12 @@ class Token implements TokenInterface
 *Note: Composite tokens can be used to describe complex structures like strings 
 that contain interpolated expressions and special chars.*
 
-### Token Bytes
+#### Bytes
 
 The `getBytes()` method returns token length in bytes. This information is 
 often required to implement multistate lexers.
 
-### Token Constants
+## Constants
 
 Each token contains a set of constants that define some standard categories 
 and are used instead of identifiers, i.e. will returned by the `getType` method.
