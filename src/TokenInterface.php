@@ -15,13 +15,6 @@ namespace Phplrt\Contracts\Lexer;
 interface TokenInterface
 {
     /**
-     * ID of the token that marks the end of the incoming data.
-     *
-     * @var int
-     */
-    public const TYPE_END_OF_INPUT = 0x00;
-
-    /**
      * ID of a token that is anonymous (without ID) or should
      * be ignored by the parser.
      *
@@ -39,6 +32,14 @@ interface TokenInterface
      * @var int
      */
     public const TYPE_UNKNOWN = -0x02;
+    
+    
+    /**
+     * ID of the token that marks the end of the incoming data.
+     *
+     * @var int
+     */
+    public const TYPE_END_OF_INPUT = -0x03;
 
     /**
      * Returns a token type if he is known.
