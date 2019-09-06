@@ -110,28 +110,11 @@ often required to implement multistate lexers.
 ## Constants
 
 Each token contains a set of constants that define some standard categories 
-and are used instead of identifiers, i.e. will returned by the `getType` method.
+and are used instead of identifiers, i.e. will returned by the `getName` method.
 
 #### End Of Input
 
-The `TokenInterface::TYPE_END_OF_INPUT` constant contains an ID of a token that 
+The `TokenInterface::END_OF_INPUT` constant contains an ID of a token that 
 marks the end of the incoming data.
 
 The char `\0` can be a value of such a token.
-
-#### Skipped
-
-The `TokenInterface::TYPE_SKIP` constant contains an ID of a token that should be 
-ignored by the parser. For example, very often, these are line breaks, 
-whitespace, and comments.
-
-*Note: In various implementations of lexers, this token can be excluded from the 
-values of the returned iterator.*
-
-#### Unknown
-
-The `TokenInterface::TYPE_UNKNOWN` constant contains an ID of a token that was not 
-defined by the lexer.
-
-*Note: In various lexer implementations, a `RuntimeExceptionInterface` exception 
-can be raised instead of returning this token.*

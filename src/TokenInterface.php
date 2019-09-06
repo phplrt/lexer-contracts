@@ -19,7 +19,7 @@ interface TokenInterface
      *
      * @var string
      */
-    public const NAME_END_OF_INPUT = 'T_EOI';
+    public const END_OF_INPUT = 'T_EOI';
 
     /**
      * Returns a token name.
