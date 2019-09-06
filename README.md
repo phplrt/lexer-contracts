@@ -54,24 +54,21 @@ namespace Phplrt\Contracts\Lexer;
 
 interface TokenInterface 
 {
-    public function getType(): int;
+    public function getName(): string;
     public function getOffset(): int;
     public function getValue(): string;
     public function getBytes(): int;
 }
 ```
 
-#### Type
+#### Name
 
-The `getType()` method returns an identifier to which you can refer. The use of 
-a numerical identifier instead of strings is caused by its simpler adaptation 
-to existing solutions. In addition, it can be quite easily adapted to systems 
-that use string identifiers:
+The `getName()` method returns a name identifier to which you can refer.
 
 ```php
-$tokens = ['whitespace', 'int', 'string', ...];
-
-echo 'Token name is: ' . $tokens[$token->getType()];
+foreach ($tokens as $token) {
+    echo 'Token name is: ' . $token->getName() . "\n";
+}
 ```
 
 #### Offset
