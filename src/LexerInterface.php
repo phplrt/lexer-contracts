@@ -21,10 +21,9 @@ interface LexerInterface
      * Returns a set of token objects from the passed source.
      *
      * @param string|resource $source
+     * @param int $offset
      * @return iterable|TokenInterface[]
      *
-     * @throws LexerExceptionInterface
-     * @throws RuntimeExceptionInterface
      */
-    public function lex($source): iterable;
+    public function lex($source, int $offset = 0): iterable;
 }
