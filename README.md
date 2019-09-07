@@ -6,17 +6,10 @@
 
 A set of interfaces for abstraction over lexers.
 
-The main lexer interface is described in a single method `lex($source)` which 
-can receive an arbitrary data type as a source and return a list of tokens.
+The main lexer interface is described in a single method `lex` which 
+can receive an arbitrary data type as a source and return a list of tokens:
 
-```php
-namespace Phplrt\Contracts\Lexer;
-
-interface LexerInterface
-{
-    public function lex($source): iterable;
-}
-```
+- `public function lex(string|resource $source[, int $offset = 0]): iterable`
 
 Although the method `lex($source)` allows to pass anything, it is obliged to 
 guarantee the work with the `resource` and `string` types.
