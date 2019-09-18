@@ -7,14 +7,12 @@
  */
 declare(strict_types=1);
 
-namespace Phplrt\Compiler\Ast\Def;
-
-use Phplrt\Compiler\Ast\Node;
+namespace Phplrt\Contracts\Lexer\Exception;
 
 /**
- * Class Definition
- * @internal Compiler's grammar AST node class
+ * Throws when internal lexer exception occurs.
  */
-abstract class Definition extends Node
+interface LexerExceptionInterface extends \Throwable
 {
+
 }
