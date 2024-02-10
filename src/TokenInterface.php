@@ -5,51 +5,40 @@ declare(strict_types=1);
 namespace Phplrt\Contracts\Lexer;
 
 /**
- * The lexical token that returns from {@see LexerInterface}.
+ * The lexical token that returns from LexerInterface
  */
 interface TokenInterface
 {
     /**
-     * Returns the unique name or identifier of the token.
+     * Name of the token that marks the end of the incoming data.
      *
-     * In the case that the token is not identified in any way in the grammar
-     * (for example, quotes or curly braces), then the value ({@see getValue()})
-     * of such a token can be used as a name.
-     *
-     * @return non-empty-string|int
+     * @var string
      */
-    public function getName(): string|int;
+    public const END_OF_INPUT = 'T_EOI';
 
     /**
-     * Returns the position (offset) of the token in the source, in bytes.
+     * Returns a token name.
+     *
+     * @return non-empty-string
+     */
+    public function getName(): string;
+
+    /**
+     * Token position in bytes
      *
      * @return int<0, max>
      */
     public function getOffset(): int;
 
     /**
-     * Returns the value of the captured subgroup.
+     * Returns the value of the captured subgroup
      */
     public function getValue(): string;
 
     /**
-     * The token size in bytes.
-     *
-     * Please note that the actual size may differ from the number of bytes in
-     * the token's value. For example, a token denoting the end of source
-     * (T_EOI) can be represented as a "\0" character, but the actual size of
-     * such a token is zero.
+     * The token value size in bytes
      *
      * @return int<0, max>
      */
     public function getBytes(): int;
-
-    /**
-     * Returns the channel (category) of the token.
-     *
-     * Note that a channel can be either a standard channel
-     * ({@see Channel}) or a custom channel that implements
-     * a common interface ({@see ChannelInterface}).
-     */
-    public function getChannel(): ChannelInterface;
 }
