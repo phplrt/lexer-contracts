@@ -40,8 +40,11 @@ class CompatibilityTest extends TestCase
 
         new class () implements TokenInterface {
             public function getName(): string {}
+
             public function getOffset(): int {}
+
             public function getValue(): string {}
+
             public function getBytes(): int {}
         };
     }
