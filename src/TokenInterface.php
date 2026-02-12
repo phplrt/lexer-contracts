@@ -5,44 +5,51 @@ declare(strict_types=1);
 namespace Phplrt\Contracts\Lexer;
 
 /**
- * The lexical token that returns from LexerInterface
+ * The lexical token that returns from {@see LexerInterface}
  */
-interface TokenInterface
+interface TokenInterface extends \Stringable
 {
     /**
-     * Name of the token that marks the end of the incoming data.
+     * Gets a token name
      *
-     * @var non-empty-string
+     * In case of the token name contains an {@see int}, this means that
+     * the token is anonymous and does not have its own special name.
      *
-     * @deprecated since 3.6 and will be removed in 4.0.
-     *             Please use vendor-specific token names instead,
-     *             like {@see \Phplrt\Lexer\Token\EndOfInput::DEFAULT_TOKEN_NAME}.
+     * @var non-empty-string|int
      */
-    public const END_OF_INPUT = 'T_EOI';
+    public string|int $name {
+        get;
+    }
 
     /**
-     * Returns a token name.
-     *
-     * @return non-empty-string
+     * Gets a channel of the token
      */
-    public function getName(): string;
+    public ?ChannelInterface $channel {
+        get;
+    }
 
     /**
-     * Token position in bytes
+     * Gets token position in bytes
      *
-     * @return int<0, max>
+     * @var int<0, max>
      */
-    public function getOffset(): int;
+    public int $offset {
+        get;
+    }
 
     /**
-     * Returns the value of the captured subgroup
+     * Gets the value of the captured subgroup
      */
-    public function getValue(): string;
+    public string $value {
+        get;
+    }
 
     /**
-     * The token value size in bytes
+     * Gets the token value size in bytes
      *
-     * @return int<0, max>
+     * @var int<0, max>
      */
-    public function getBytes(): int;
+    public int $bytes {
+        get;
+    }
 }
