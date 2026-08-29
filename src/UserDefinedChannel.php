@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Phplrt\Contracts\Lexer;
 
 /**
- * A channel that is defined outside of the basic set of the token channels.
+ * A channel that is defined outside the basic set of the token channels.
+ *
+ * @readonly
  */
-readonly class UserDefinedChannel implements ChannelInterface
+class UserDefinedChannel implements ChannelInterface
 {
     public function __construct(
         /**
